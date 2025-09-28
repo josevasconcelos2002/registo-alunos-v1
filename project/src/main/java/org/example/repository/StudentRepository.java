@@ -40,6 +40,46 @@ public class StudentRepository {
         }
     }
 
+    public void deleteStudent(Integer ID)
+    {
+        try{
+            if(!this.StudentRepositoryMap.containsKey(ID))
+            {
+                System.out.println("ERROR! Student ID does not exist.");
+            }
+            else
+            {
+                this.StudentRepositoryMap.remove(ID);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void searchStudent(Integer ID)
+    {
+        try{
+            if(!this.StudentRepositoryMap.containsKey(ID))
+            {
+                System.out.println("ERROR! Student ID does not exist.");
+            }
+            else
+            {
+                Student searchStudent  = this.StudentRepositoryMap.get(ID);
+                if(searchStudent == null)
+                {
+                    System.out.println("ERROR! Student ID exists, but student is empty.");
+                }
+                else
+                {
+                    searchStudent.printStudent();
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void listAllStudents()
     {
         Set<Integer> keys = this.StudentRepositoryMap.keySet();
