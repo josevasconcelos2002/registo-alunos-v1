@@ -8,12 +8,12 @@ import java.util.Set;
 public class StudentRepository {
     private HashMap<Integer, Student> StudentRepositoryMap;
 
-    StudentRepository()
+    public StudentRepository()
     {
         this.StudentRepositoryMap = new HashMap<>();
     }
 
-    StudentRepository(HashMap<Integer, Student> newMap)
+    public StudentRepository(HashMap<Integer, Student> newMap)
     {
         this.StudentRepositoryMap = newMap;
     }

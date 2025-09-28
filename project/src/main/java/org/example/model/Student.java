@@ -5,14 +5,14 @@ public class Student {
     private String name;
     private Integer age;
 
-    Student()
+    public Student()
     {
         this.id = 0;
         this.name = "No Name";
         this.age = 18;
     }
 
-    Student(String name, Integer age)
+    public Student(String name, Integer age)
     {
         this.id = 0;
         this.name = name;
@@ -20,7 +20,7 @@ public class Student {
             this.age = age;
     }
 
-    Student(Integer id, String name, Integer age)
+    public Student(Integer id, String name, Integer age)
     {
         if(id > 0)
             this.id = id;

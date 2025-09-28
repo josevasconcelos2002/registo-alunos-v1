@@ -1,43 +1,46 @@
 package org.example;
 
+import org.example.model.Student;
+import org.example.repository.StudentRepository;
+import org.example.ui.Menu;
+
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner menu = new Scanner (System.in);
+        StudentRepository students = new StudentRepository();
+        Menu menu = new Menu();
 
         while (true) {
 
-            System.out.print("--Teste Estrutura de Menu--\n\n");
-            System.out.print("|-----------------------------|\n");
-            System.out.print("|  [1] - Create Student       |\n");
-            System.out.print("|  [2] - List Students        |\n");
-            System.out.print("|  [3] - Remove Student       |\n");
-            System.out.print("|  [4] - Search Student       |\n");
-            System.out.print("|  [5] - Exit                 |\n");
-            System.out.print("|-----------------------------|\n");
-            System.out.print("Option: ");
-
-            int option = menu.nextInt();
+            int option = menu.mainMenu();
 
             if (option == 5) {
                 System.out.print("\nCya!");
-                menu.close();
+                menu.getScanner().close();
+                break;
             }
 
             switch (option) {
                 case 1:
+                    Student newStudent = menu.createStudentMenu();
+                    students.addStudent(newStudent);
                     break;
 
                 case 2:
+                    students.listAllStudents();
                     break;
 
                 case 3:
+                    Integer IDtoRemove = menu.removeStudentMenu();
+                    students.deleteStudent(IDtoRemove);
                     break;
 
-                    case 4:
-                        break;
-
+                case 4:
+                    Integer IDtoSearch = menu.removeStudentMenu();
+                    students.searchStudent(IDtoSearch);
+                    break;
                 default:
                     break;
             }
